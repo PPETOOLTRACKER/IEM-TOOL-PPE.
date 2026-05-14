@@ -10,7 +10,7 @@ const DATA_FILE = path.join(__dirname, 'data.json');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ─── Seed Data ─────────────────────────────────────────────────────────────
 const SEED_TOOLS = [
@@ -227,11 +227,10 @@ app.post('/api/reset', (req, res) => {
 
 // ─── Serve frontend ────────────────────────────────────────────────────────
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, HOST, () => {
   console.log(`IEM Tracker running at http://${HOST}:${PORT}`);
 });
-
 
