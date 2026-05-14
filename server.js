@@ -5,6 +5,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = '0.0.0.0';
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 app.use(cors());
@@ -229,6 +230,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`IEM Tracker running at http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`IEM Tracker running at http://${HOST}:${PORT}`);
 });
+
